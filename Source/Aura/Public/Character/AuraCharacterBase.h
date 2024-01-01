@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "Components/SkeletalMeshComponent.h"
 #include "AuraCharacterBase.generated.h"
 
 UCLASS(Abstract)
@@ -16,5 +17,7 @@ public:
 
 protected:
 	virtual void BeginPlay() override;
-
+	
+	UPROPERTY(EditAnywhere, Category="Combat")
+	TObjectPtr<USkeletalMeshComponent> Weapon;
 };
