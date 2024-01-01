@@ -7,11 +7,75 @@
 #include "Engine/LocalPlayer.h"
 #include "EnhancedInputComponent.h"
 #include "GameFramework/Pawn.h"
+#include "Interaction/EnemyInterface.h"
 
 AAuraPlayerController::AAuraPlayerController()
 {
 	bReplicates = true;
 }
+
+void AAuraPlayerController::PlayerTick(float DeltaTime)
+{
+	Super::PlayerTick(DeltaTime);
+	
+	CursorTrace();
+}
+
+void AAuraPlayerController::CursorTrace()
+{
+	FHitResult CursorHit;
+	GetHitResultUnderCursor(ECC_Visibility,false,CursorHit);
+	if(!CursorHit.bBlockingHit) return;;
+
+	LastActor = ThisActor;
+	ThisActor = Cast<IEnemyInterface>(CursorHit.GetActor());
+	/**
+	 * Line trace from cursor. There are several scnarious:
+	 *  A. LastActor is null && ThisActor is null
+	 *		- Do nothing
+	 *	B. LastActor is null && ThisActor is valid
+	 *		- Highligh ThisActor
+	 *	C. LastActor is valid && ThisActor is null
+	 *		- UnHighlight LastActor
+	 *	D. Both actors are valid, but LastActor != ThisActor
+	 *		- UnHightligh LastActor and Highlight ThisActor
+	 *	E. Both actors are valid, and are the same Actor
+	 *		- Do nothing
+	 */
+
+	if(LastActor == nullptr)
+	{
+		if(ThisActor != nullptr)
+		{
+			//Case B
+			ThisActor->HighlightActor();
+		}else
+		{
+			//Case A -> Do nothing
+		}
+	}
+	else //LastActor is valid
+	{
+		if(ThisActor == nullptr)
+		{
+			//Case C
+			LastActor->UnHighlightActor();
+		}
+		else
+		{
+			if(LastActor != ThisActor)
+			{
+				//Case D
+				LastActor->UnHighlightActor();
+				ThisActor->HighlightActor();
+			}else
+			{
+				//Case E -> Do nothing
+			}
+		}
+	}
+}
+
 
 void AAuraPlayerController::BeginPlay()
 {
