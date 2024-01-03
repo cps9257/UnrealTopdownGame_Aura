@@ -9,10 +9,20 @@
 /**
  * 
  */
+
+class UAuraAbilitySystemComponent;
+class UAuraAttributeSet;
+
 UCLASS()
 class AURA_API AAuraPlayerState : public APlayerState
 {
 	GENERATED_BODY()
 public:
 	AAuraPlayerState();
+
+protected:
+	UPROPERTY()
+	TObjectPtr<UAuraAbilitySystemComponent> AbilitySystemComponent;
+	UPROPERTY()
+	TObjectPtr<UAuraAttributeSet> AttributeSet;
 };
