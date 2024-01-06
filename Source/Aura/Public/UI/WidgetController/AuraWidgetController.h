@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "AbilitySystemComponent.h"
 #include "UObject/ObjectMacros.h"
 #include "GameFramework/PlayerState.h"
 #include "UObject/NoExportTypes.h"
@@ -10,6 +11,30 @@
 
 class UAttributeSet;
 class UAbilitySystemComponent;
+
+USTRUCT(BlueprintType)
+struct FWidgetControllerParams
+{
+	GENERATED_BODY()
+
+	FWidgetControllerParams(){}
+	FWidgetControllerParams(APlayerController* PC,APlayerState* PS, UAbilitySystemComponent* ASC, UAttributeSet* AS)
+	: PlayerController(PC),PlayerState(PS),AbilitySystemComponent(ASC),AttributeSet(AS) {}
+
+	UPROPERTY(EditAnywhere,BlueprintReadOnly)
+	TObjectPtr<APlayerController> PlayerController= nullptr;
+
+	UPROPERTY(EditAnywhere,BlueprintReadOnly)
+	TObjectPtr<APlayerState> PlayerState= nullptr;
+
+	UPROPERTY(EditAnywhere,BlueprintReadOnly)
+	TObjectPtr<UAbilitySystemComponent> AbilitySystemComponent= nullptr;
+
+	UPROPERTY(EditAnywhere,BlueprintReadOnly)
+	TObjectPtr<UAttributeSet> AttributeSet= nullptr;
+	
+};
+
 /**
  * 
  */
@@ -17,7 +42,10 @@ UCLASS()
 class AURA_API UAuraWidgetController : public UObject
 {
 	GENERATED_BODY()
-
+public:
+	UFUNCTION(BlueprintCallable)
+	void SetWidgetControllerParams(const FWidgetControllerParams& WCParams);
+	
 protected:
 	UPROPERTY(BlueprintReadOnly,Category="WidgetContorller")
 	TObjectPtr<APlayerController> PlayerController;
