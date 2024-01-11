@@ -63,4 +63,6 @@ protected:
 	TArray<FGameplayEffectAppliedHandle> GameplayEffectAppliedHandles;
 	
 	TMap<FActiveGameplayEffectHandle,UAbilitySystemComponent*> ActiveEffectHandles;
+
+	
 };
