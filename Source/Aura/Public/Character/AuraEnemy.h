@@ -24,4 +24,6 @@ protected:
 	virtual void HighlightActor() override;
 	virtual void UnHighlightActor() override;
 	/** E Enemy Interface **/
+
+	virtual void InitAbilityActorInfo() override;
 };
