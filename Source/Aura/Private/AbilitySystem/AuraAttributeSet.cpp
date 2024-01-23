@@ -8,8 +8,6 @@
 
 UAuraAttributeSet::UAuraAttributeSet()
 {
-	InitHealth(50);
-	InitMana(50);
 }
 
 void UAuraAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const

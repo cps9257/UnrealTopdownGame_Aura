@@ -31,6 +31,7 @@ void AAuraCharacterBase::InitalizeDefaultAttributes() const
 {
 	ApplyEffectToSelf(DefaultPrimaryAttribute,1.f);
 	ApplyEffectToSelf(DefaultSecondaryAttribute,1.f);
+	ApplyEffectToSelf(DefaultVitalAttribute,1.f);
 }
 
 void AAuraCharacterBase::ApplyEffectToSelf(TSubclassOf<UGameplayEffect> GameplayEffectClass, float level) const
