@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "UI/WidgetController/AuraWidgetController.h"
 #include "AbilitySystem/Data/AttributeInfo.h"
+#include "AbilitySystem/AuraAttributeSet.h"
 #include "AttributeMenuWidgetController.generated.h"
 
 class UAttributeInfo;
@@ -24,7 +25,11 @@ public:
 	UPROPERTY(BlueprintAssignable, Category = "GAS|Attribute")
 	FAttributeInfoSignature AttributeInfoDelegate;
 
-private:
+
+protected:
 	UPROPERTY(EditDefaultsOnly)
 	TObjectPtr<UAttributeInfo> AttributeInfo;
+
+private:
+	void BroadcastAttributeInfo(const FGameplayTag& AttributeTag, const FGameplayAttribute& Attribute, const UAuraAttributeSet* AuraAttributeSet) const;
 };
