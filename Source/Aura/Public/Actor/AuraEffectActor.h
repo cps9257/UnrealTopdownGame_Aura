@@ -36,17 +36,17 @@ struct FGameplayEffectAppliedHandle
 	EEffectApplicationPolicy EffectApplicationPolicy = EEffectApplicationPolicy::DoNotApply;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Applied Effects")
-	EEffectRemovalPolicy EffectRemovalPolicy= EEffectRemovalPolicy::DoNotRemove;
+	EEffectRemovalPolicy EffectRemovalPolicy = EEffectRemovalPolicy::DoNotRemove;
 };
 
 UCLASS()
 class AURA_API AAuraEffectActor : public AActor
 {
 	GENERATED_BODY()
-	
-public:	
+
+public:
 	AAuraEffectActor();
-	
+
 protected:
 	virtual void BeginPlay() override;
 
@@ -61,8 +61,8 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Applied Effects")
 	TArray<FGameplayEffectAppliedHandle> GameplayEffectAppliedHandles;
-	
-	TMap<FActiveGameplayEffectHandle,UAbilitySystemComponent*> ActiveEffectHandles;
+
+	TMap<FActiveGameplayEffectHandle, UAbilitySystemComponent*> ActiveEffectHandles;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Applied Effects")
 	float ActorLevel = 1.f;

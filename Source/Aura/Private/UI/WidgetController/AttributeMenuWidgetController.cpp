@@ -2,9 +2,7 @@
 
 
 #include "UI/WidgetController/AttributeMenuWidgetController.h"
-
 #include "AbilitySystem/Data/AttributeInfo.h"
-
 
 void UAttributeMenuWidgetController::BindCallbacksToDependencies()
 {

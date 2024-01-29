@@ -28,7 +28,6 @@ public:
 	void InitOverlay(APlayerController* PC, APlayerState* PS, UAbilitySystemComponent* ASC, UAttributeSet* AS);
 
 private:
-
 	UPROPERTY()
 	TObjectPtr<UAuraUserWidget> OverlayWidget;
 

@@ -34,6 +34,7 @@ void AAuraCharacter::OnRep_PlayerState()
 	Super::OnRep_PlayerState();
 	//Init ability actor info for the client
 	InitAbilityActorInfo();
+	AddCharacterAbilities();
 }
 
 int32 AAuraCharacter::GetPlayerLevel()
@@ -60,5 +61,5 @@ void AAuraCharacter::InitAbilityActorInfo()
 		}
 	}
 
-	InitalizeDefaultAttributes();
+	InitializeDefaultAttributes();
 }

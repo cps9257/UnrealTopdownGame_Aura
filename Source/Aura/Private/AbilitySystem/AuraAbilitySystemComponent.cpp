@@ -2,7 +2,6 @@
 
 
 #include "AbilitySystem/AuraAbilitySystemComponent.h"
-
 #include "AuraGameplayTags.h"
 
 void UAuraAbilitySystemComponent::AbilityActorInfoSet()
@@ -16,4 +15,14 @@ void UAuraAbilitySystemComponent::EffectApplied(UAbilitySystemComponent* Ability
 	FGameplayTagContainer TagContainer;
 	EffectSpec.GetAllAssetTags(TagContainer);
 	EffectAssetTags.Broadcast(TagContainer);
+}
+
+void UAuraAbilitySystemComponent::AddCharacterAbilities(const TArray<TSubclassOf<UGameplayAbility>>& StartupAbilities)
+{
+	for(const auto AbilityClass : StartupAbilities)
+	{
+		FGameplayAbilitySpec AbilitySpec = FGameplayAbilitySpec(AbilityClass,1);
+		// GiveAbility(AbilitySpec);
+		GiveAbilityAndActivateOnce(AbilitySpec);
+	}
 }

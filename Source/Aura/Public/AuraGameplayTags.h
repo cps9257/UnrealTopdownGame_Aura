@@ -11,7 +11,7 @@
 struct FAuraGameplayTags
 {
 public:
-	static const FAuraGameplayTags& Get() {return GameplayTags;}
+	static const FAuraGameplayTags& Get() { return GameplayTags; }
 	static void InitializeNativeGameplayTags();
 
 	// Primary Attributes
@@ -19,7 +19,7 @@ public:
 	FGameplayTag Attributes_Primary_Intelligence;
 	FGameplayTag Attributes_Primary_Resilience;
 	FGameplayTag Attributes_Primary_Vigor;
-	
+
 	// Secondary Attributes
 	FGameplayTag Attributes_Secondary_Armor;
 	FGameplayTag Attributes_Secondary_ArmorPenetration;

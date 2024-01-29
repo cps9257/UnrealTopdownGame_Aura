@@ -2,8 +2,8 @@
 
 
 #include "Character/AuraCharacterBase.h"
-#include "AbilitySystemBlueprintLibrary.h"
 #include "AbilitySystemComponent.h"
+#include "AbilitySystem/AuraAbilitySystemComponent.h"
 
 AAuraCharacterBase::AAuraCharacterBase()
 {
@@ -27,13 +27,6 @@ void AAuraCharacterBase::InitAbilityActorInfo()
 {
 }
 
-void AAuraCharacterBase::InitalizeDefaultAttributes() const
-{
-	ApplyEffectToSelf(DefaultPrimaryAttribute,1.f);
-	ApplyEffectToSelf(DefaultSecondaryAttribute,1.f);
-	ApplyEffectToSelf(DefaultVitalAttribute,1.f);
-}
-
 void AAuraCharacterBase::ApplyEffectToSelf(TSubclassOf<UGameplayEffect> GameplayEffectClass, float level) const
 {
 	UAbilitySystemComponent* TargetASC = GetAbilitySystemComponent();
@@ -45,4 +38,19 @@ void AAuraCharacterBase::ApplyEffectToSelf(TSubclassOf<UGameplayEffect> Gameplay
 	TargetASC->ApplyGameplayEffectSpecToTarget(*EffectSpecHandle.Data.Get(), TargetASC);
 }
 
+
+void AAuraCharacterBase::InitializeDefaultAttributes() const
+{
+	ApplyEffectToSelf(DefaultPrimaryAttribute,1.f);
+	ApplyEffectToSelf(DefaultSecondaryAttribute,1.f);
+	ApplyEffectToSelf(DefaultVitalAttribute,1.f);
+}
+
+void AAuraCharacterBase::AddCharacterAbilities() const
+{
+	UAuraAbilitySystemComponent* AuraASC = CastChecked<UAuraAbilitySystemComponent>(AbilitySystemComponent);
+	if(!HasAuthority())return;
+	
+	AuraASC->AddCharacterAbilities(StartupAbilities);
+}
 

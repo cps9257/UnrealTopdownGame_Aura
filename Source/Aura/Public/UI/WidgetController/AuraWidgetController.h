@@ -17,22 +17,26 @@ struct FWidgetControllerParams
 {
 	GENERATED_BODY()
 
-	FWidgetControllerParams(){}
-	FWidgetControllerParams(APlayerController* PC,APlayerState* PS, UAbilitySystemComponent* ASC, UAttributeSet* AS)
-	: PlayerController(PC),PlayerState(PS),AbilitySystemComponent(ASC),AttributeSet(AS) {}
+	FWidgetControllerParams()
+	{
+	}
 
-	UPROPERTY(EditAnywhere,BlueprintReadOnly)
-	TObjectPtr<APlayerController> PlayerController= nullptr;
+	FWidgetControllerParams(APlayerController* PC, APlayerState* PS, UAbilitySystemComponent* ASC, UAttributeSet* AS)
+		: PlayerController(PC), PlayerState(PS), AbilitySystemComponent(ASC), AttributeSet(AS)
+	{
+	}
 
-	UPROPERTY(EditAnywhere,BlueprintReadOnly)
-	TObjectPtr<APlayerState> PlayerState= nullptr;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	TObjectPtr<APlayerController> PlayerController = nullptr;
 
-	UPROPERTY(EditAnywhere,BlueprintReadOnly)
-	TObjectPtr<UAbilitySystemComponent> AbilitySystemComponent= nullptr;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	TObjectPtr<APlayerState> PlayerState = nullptr;
 
-	UPROPERTY(EditAnywhere,BlueprintReadOnly)
-	TObjectPtr<UAttributeSet> AttributeSet= nullptr;
-	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	TObjectPtr<UAbilitySystemComponent> AbilitySystemComponent = nullptr;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	TObjectPtr<UAttributeSet> AttributeSet = nullptr;
 };
 
 /**
@@ -42,24 +46,26 @@ UCLASS(BlueprintType, Blueprintable)
 class AURA_API UAuraWidgetController : public UObject
 {
 	GENERATED_BODY()
+
 public:
 	UFUNCTION(BlueprintCallable)
 	void SetWidgetControllerParams(const FWidgetControllerParams& WCParams);
-	
+
 	UFUNCTION(BlueprintCallable)
 	virtual void BroadcastInitialValues();
 
 	virtual void BindCallbacksToDependencies();
+
 protected:
-	UPROPERTY(BlueprintReadOnly,Category="WidgetContorller")
+	UPROPERTY(BlueprintReadOnly, Category="WidgetContorller")
 	TObjectPtr<APlayerController> PlayerController;
 
-	UPROPERTY(BlueprintReadOnly,Category="WidgetContorller")
+	UPROPERTY(BlueprintReadOnly, Category="WidgetContorller")
 	TObjectPtr<APlayerState> PlayerState;
 
-	UPROPERTY(BlueprintReadOnly,Category="WidgetContorller")
+	UPROPERTY(BlueprintReadOnly, Category="WidgetContorller")
 	TObjectPtr<UAbilitySystemComponent> AbilitySystemComponent;
 
-	UPROPERTY(BlueprintReadOnly,Category="WidgetContorller")
+	UPROPERTY(BlueprintReadOnly, Category="WidgetContorller")
 	TObjectPtr<UAttributeSet> AttributeSet;
 };
