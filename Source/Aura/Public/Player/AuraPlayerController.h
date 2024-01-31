@@ -6,6 +6,7 @@
 #include "GameplayTagContainer.h"
 #include "GameFramework/PlayerController.h"
 #include "AbilitySystem/AuraAbilitySystemComponent.h"
+#include "Components/SplineComponent.h"
 #include "AuraPlayerController.generated.h"
 
 class UAuraInputConfig;
@@ -31,6 +32,9 @@ protected:
 	virtual void SetupInputComponent() override;
 
 private:
+
+	// Move by keyboard
+	
 	UPROPERTY(EditAnywhere, Category="Input")
 	TObjectPtr<UInputMappingContext> AuraContext;
 
@@ -38,11 +42,14 @@ private:
 	TObjectPtr<UInputAction> MoveAction;
 
 	void Move(const FInputActionValue& InputActionValue);
+	
+	// Highlight enemy when hovering by cursor
 	void CursorTrace();
 
 	TObjectPtr<IEnemyInterface> LastActor;
 	TObjectPtr<IEnemyInterface> ThisActor;
 
+	// Handle Input Tag
 	void AbilityInputTagPressed(FGameplayTag InputTag);
 	void AbilityInputTagReleased(FGameplayTag InputTag);
 	void AbilityInputTagHeld(FGameplayTag InputTag);
@@ -54,4 +61,21 @@ private:
 	TObjectPtr<UAuraAbilitySystemComponent> AuraAbilitySystemComponent;
 
 	UAuraAbilitySystemComponent* GetASC();
+	
+	// Move by Cursor
+	
+	FVector CachedDestination = FVector::ZeroVector;
+	float FollowTime = 0.f;
+	
+	UPROPERTY(EditDefaultsOnly, Category = "Input")
+	float ShortPressThreshold = 0.5f;
+	
+	bool bAutoRunning = false;
+	bool bTargeting = false;
+	
+	UPROPERTY(EditDefaultsOnly, Category = "Input")
+	float AutoRunAcceptanceRadius = 50.f;
+
+	UPROPERTY(VisibleAnywhere, Category = "Input")
+	TObjectPtr<USplineComponent> Spline;
 };
