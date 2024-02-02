@@ -78,4 +78,6 @@ private:
 
 	UPROPERTY(VisibleAnywhere, Category = "Input")
 	TObjectPtr<USplineComponent> Spline;
+
+	void AutoRun();
 };
