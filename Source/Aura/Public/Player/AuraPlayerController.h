@@ -45,9 +45,9 @@ private:
 	
 	// Highlight enemy when hovering by cursor
 	void CursorTrace();
-
 	TObjectPtr<IEnemyInterface> LastActor;
 	TObjectPtr<IEnemyInterface> ThisActor;
+	FHitResult CursorHit;
 
 	// Handle Input Tag
 	void AbilityInputTagPressed(FGameplayTag InputTag);
