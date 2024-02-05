@@ -32,17 +32,23 @@ protected:
 	virtual void SetupInputComponent() override;
 
 private:
-
 	// Move by keyboard
-	
+
 	UPROPERTY(EditAnywhere, Category="Input")
 	TObjectPtr<UInputMappingContext> AuraContext;
 
 	UPROPERTY(EditAnywhere, Category="Input")
 	TObjectPtr<UInputAction> MoveAction;
 
+	UPROPERTY(EditAnywhere, Category="Input")
+	TObjectPtr<UInputAction> ShiftAction;
+
+	bool bShiftKeyDown = false;
+	void ShiftPressed() { bShiftKeyDown = true; };
+	void ShiftReleased() { bShiftKeyDown = false; };
+
 	void Move(const FInputActionValue& InputActionValue);
-	
+
 	// Highlight enemy when hovering by cursor
 	void CursorTrace();
 	TObjectPtr<IEnemyInterface> LastActor;
@@ -53,7 +59,7 @@ private:
 	void AbilityInputTagPressed(FGameplayTag InputTag);
 	void AbilityInputTagReleased(FGameplayTag InputTag);
 	void AbilityInputTagHeld(FGameplayTag InputTag);
-	
+
 	UPROPERTY(EditDefaultsOnly, Category = "Input")
 	TObjectPtr<UAuraInputConfig> InputConfig;
 
@@ -61,18 +67,18 @@ private:
 	TObjectPtr<UAuraAbilitySystemComponent> AuraAbilitySystemComponent;
 
 	UAuraAbilitySystemComponent* GetASC();
-	
+
 	// Move by Cursor
-	
+
 	FVector CachedDestination = FVector::ZeroVector;
 	float FollowTime = 0.f;
-	
+
 	UPROPERTY(EditDefaultsOnly, Category = "Input")
 	float ShortPressThreshold = 0.5f;
-	
+
 	bool bAutoRunning = false;
 	bool bTargeting = false;
-	
+
 	UPROPERTY(EditDefaultsOnly, Category = "Input")
 	float AutoRunAcceptanceRadius = 50.f;
 
