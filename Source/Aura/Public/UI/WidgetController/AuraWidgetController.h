@@ -6,7 +6,6 @@
 #include "AbilitySystemComponent.h"
 #include "UObject/ObjectMacros.h"
 #include "GameFramework/PlayerState.h"
-#include "UObject/NoExportTypes.h"
 #include "AuraWidgetController.generated.h"
 
 class UAttributeSet;
