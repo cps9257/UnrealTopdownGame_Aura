@@ -119,7 +119,7 @@ void UExecCalc_Damage::Execute_Implementation(const FGameplayEffectCustomExecuti
 	const float CriticalHitResistanceCoefficient = CriticalHitResistanceCurve->Eval(TargetCombatInterface->GetPlayerLevel());
 
 	// Use CriticalHit Resistance to reduce the chance
-	const bool bCritical = SourceCriticalChance - TargetCriticalHitResistance * CriticalHitResistanceCoefficient  > FMath::RandRange(0.f, 1.f);
+	const bool bCritical = SourceCriticalChance - TargetCriticalHitResistance * CriticalHitResistanceCoefficient > FMath::RandRange(0.f, 1.f);
 	// If Critical, double the damage plus critical damage,
 	Damage = bCritical ? Damage * 2.f + SourceCriticalHitDamage : Damage;
 	
