@@ -17,7 +17,7 @@ void UAuraProjectileSpell::ActivateAbility(const FGameplayAbilitySpecHandle Hand
 	Super::ActivateAbility(Handle, ActorInfo, ActivationInfo, TriggerEventData);
 }
 
-void UAuraProjectileSpell::SpawnProjectile(const FVector ProjectileTargetLocation)
+void UAuraProjectileSpell::SpawnProjectile(const FVector ProjectileTargetLocation, const FGameplayTag& SocketTag)
 {
 	AActor* AvatarActor = GetAvatarActorFromActorInfo();
 	const bool bIsServer = AvatarActor->HasAuthority();
@@ -25,7 +25,7 @@ void UAuraProjectileSpell::SpawnProjectile(const FVector ProjectileTargetLocatio
 
 	AActor* OwnerActor = GetOwningActorFromActorInfo();
 
-	const FVector SocketLocation = ICombatInterface::Execute_GetCombatSocketLocation(AvatarActor, FAuraGameplayTags::Get().CombatSocket_Weapon);
+	const FVector SocketLocation = ICombatInterface::Execute_GetCombatSocketLocation(AvatarActor, SocketTag);
 	FRotator Rotation = (ProjectileTargetLocation - SocketLocation).Rotation();
 
 	FTransform SpawnTransform;

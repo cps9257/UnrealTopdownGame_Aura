@@ -81,24 +81,23 @@ void AAuraCharacterBase::BeginPlay()
 
 FVector AAuraCharacterBase::GetCombatSocketLocation_Implementation(const FGameplayTag& MontageTag)
 {
-	//TODO Return Correct Socket based on MontageTag
 	const FAuraGameplayTags& GameplayTags = FAuraGameplayTags::Get();
-	if(MontageTag.MatchesTagExact(GameplayTags.CombatSocket_Weapon) && IsValid(Weapon))
+	if (MontageTag.MatchesTagExact(GameplayTags.CombatSocket_Weapon) && IsValid(Weapon))
 	{
 		return Weapon->GetSocketLocation(WeaponTipSocketName);
 	}
 
-	if(MontageTag.MatchesTagExact(GameplayTags.CombatSocket_LeftHand))
+	if (MontageTag.MatchesTagExact(GameplayTags.CombatSocket_LeftHand))
 	{
 		return GetMesh()->GetSocketLocation(LeftHandSocketName);
 	}
 
-	if(MontageTag.MatchesTagExact(GameplayTags.CombatSocket_RightHand))
+	if (MontageTag.MatchesTagExact(GameplayTags.CombatSocket_RightHand))
 	{
 		return GetMesh()->GetSocketLocation(RightHandSocketName);
 	}
 
-	if(MontageTag.MatchesTagExact(GameplayTags.CombatSocket_Tail))
+	if (MontageTag.MatchesTagExact(GameplayTags.CombatSocket_Tail))
 	{
 		return GetMesh()->GetSocketLocation(TailSocketName);
 	}
