@@ -16,8 +16,7 @@ TArray<FVector> UAuraSummonAbility::GetSpawnLocations()
 	{
 		const FVector Direction = LeftOfSpread.RotateAngleAxis(DeltaSpread * i, FVector::UpVector);
 		FVector ChosenSpawnLocation = Location + Direction * FMath::FRandRange(MinSpawnDistance, MaxSpawnDistance);
-		SpawnLocations.Add(ChosenSpawnLocation);
-
+		
 		FHitResult Hit;
 		GetWorld()->LineTraceSingleByChannel(Hit, ChosenSpawnLocation + FVector::UpVector * 400.f,ChosenSpawnLocation - FVector::UpVector * 400.f, ECC_Visibility);
 		if (Hit.bBlockingHit)
