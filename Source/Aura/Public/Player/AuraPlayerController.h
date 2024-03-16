@@ -8,6 +8,7 @@
 #include "AbilitySystem/AuraAbilitySystemComponent.h"
 #include "Components/SplineComponent.h"
 #include "UI/Widget/DamageTextComponent.h"
+#include "AIController.h"
 #include "AuraPlayerController.generated.h"
 
 class UAuraInputConfig;
@@ -20,7 +21,7 @@ class IEnemyInterface;
  * 
  */
 UCLASS()
-class AURA_API AAuraPlayerController : public APlayerController
+class AURA_API AAuraPlayerController : public APlayerController, public IGenericTeamAgentInterface
 {
 	GENERATED_BODY()
 
@@ -31,6 +32,7 @@ public:
 	UFUNCTION(Client, Reliable)
 	void ShowDamageNumber(float DamageAmount, ACharacter* TargetCharacter, bool bBlockedHit, bool bCriticalHit);
 
+	virtual FGenericTeamId GetGenericTeamId() const override;
 protected:
 	virtual void BeginPlay() override;
 	virtual void SetupInputComponent() override;

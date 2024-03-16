@@ -8,6 +8,7 @@
 #include "EnhancedInputSubsystems.h"
 #include "NavigationPath.h"
 #include "NavigationSystem.h"
+#include "Aura/Aura.h"
 #include "Engine/LocalPlayer.h"
 #include "GameFramework/Pawn.h"
 #include "Input/AuraInputComponent.h"
@@ -26,6 +27,11 @@ void AAuraPlayerController::PlayerTick(float DeltaTime)
 
 	CursorTrace();
 	AutoRun();
+}
+
+FGenericTeamId AAuraPlayerController::GetGenericTeamId() const
+{
+	return FGenericTeamId(PLAYER_TEAM_ID);
 }
 
 void AAuraPlayerController::ShowDamageNumber_Implementation(float DamageAmount, ACharacter* TargetCharacter, bool bBlockedHit, bool bCriticalHit)

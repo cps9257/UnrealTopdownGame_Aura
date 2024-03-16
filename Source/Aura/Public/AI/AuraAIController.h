@@ -20,6 +20,9 @@ class AURA_API AAuraAIController : public AAIController
 public:
 	AAuraAIController();
 
+	virtual FGenericTeamId GetGenericTeamId() const override;
+
+	virtual ETeamAttitude::Type GetTeamAttitudeTowards(const AActor& Other) const override;
 protected:
 
 	UPROPERTY()
