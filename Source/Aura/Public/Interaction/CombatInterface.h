@@ -9,6 +9,7 @@
 #include "CombatInterface.generated.h"
 
 
+enum class ECharacterClass : uint8;
 class UNiagaraSystem;
 class UAnimMontage;
 
@@ -79,4 +80,7 @@ public:
 
 	UFUNCTION(BlueprintNativeEvent,BlueprintCallable)
 	void SetMinionCount(int32 Amount);
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
+	ECharacterClass GetCharacterClass();
 };

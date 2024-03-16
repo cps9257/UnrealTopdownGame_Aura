@@ -152,6 +152,11 @@ void AAuraCharacterBase::InitAbilityActorInfo()
 {
 }
 
+ECharacterClass AAuraCharacterBase::GetCharacterClass_Implementation()
+{
+	return CharacterClass;
+}
+
 void AAuraCharacterBase::ApplyEffectToSelf(TSubclassOf<UGameplayEffect> GameplayEffectClass, float level) const
 {
 	UAbilitySystemComponent* TargetASC = GetAbilitySystemComponent();
