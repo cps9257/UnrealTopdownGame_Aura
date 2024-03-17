@@ -7,6 +7,7 @@
 #include "Components/SphereComponent.h"
 #include "GameFramework/Actor.h"
 #include "GameFramework/ProjectileMovementComponent.h"
+#include "Perception/AISense_Hearing.h"
 #include "AuraProjectile.generated.h"
 
 class UNiagaraSystem;

@@ -9,6 +9,7 @@
 #include "AbilitySystem/AuraAbilitySystemLibrary.h"
 #include "Interaction/CombatInterface.h"
 #include "Kismet/GameplayStatics.h"
+#include "Perception/AISense_Damage.h"
 #include "Player/AuraPlayerController.h"
 
 UAuraAttributeSet::UAuraAttributeSet()
@@ -163,6 +164,8 @@ void UAuraAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallba
 			const bool bBlock = UAuraAbilitySystemLibrary::IsBlockedHit(Props.EffectContextHandle);
 			const bool bCriticalHit = UAuraAbilitySystemLibrary::IsCriticalHit(Props.EffectContextHandle);
 			ShowFloatingText(Props, LocalIncomingDamage, bBlock, bCriticalHit);
+
+			UAISense_Damage::ReportDamageEvent(Props.SourceAvatarActor, Props.TargetAvatarActor, Props.SourceAvatarActor, LocalIncomingDamage, FVector(), FVector());
 		}
 	}
 }
