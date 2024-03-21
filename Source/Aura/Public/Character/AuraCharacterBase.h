@@ -119,6 +119,9 @@ private:
 	UPROPERTY(EditAnywhere, Category = "Abilties")
 	TArray<TSubclassOf<UGameplayAbility>> StartupAbilities;
 
+	UPROPERTY(EditAnywhere, Category = "Abilties")
+	TArray<TSubclassOf<UGameplayAbility>> StartupPassiveAbilities;
+
 	UPROPERTY(EditAnywhere, Category = "Combat")
 	TObjectPtr<UAnimMontage> HitReactMontage;
 };

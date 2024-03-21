@@ -8,7 +8,7 @@ FAuraGameplayTags FAuraGameplayTags::GameplayTags;
 // This all should put in a json file and be read
 void FAuraGameplayTags::InitializeNativeGameplayTags()
 {
-	//Primary Attributes
+	// Primary Attributes
 	GameplayTags.Attributes_Primary_Strength = UGameplayTagsManager::Get().AddNativeGameplayTag(
 		FName("Attributes.Primary.Strength"),
 		FString("Increases physical damage")
@@ -26,7 +26,7 @@ void FAuraGameplayTags::InitializeNativeGameplayTags()
 		FString("Increases health")
 	);
 
-	//Secondary Attributes
+	// Secondary Attributes
 	GameplayTags.Attributes_Secondary_Armor = UGameplayTagsManager::Get().AddNativeGameplayTag(
 		FName("Attributes.Secondary.Armor"),
 		FString("Reduce damage taken, improve block chance, affected by resilience")
@@ -91,7 +91,13 @@ void FAuraGameplayTags::InitializeNativeGameplayTags()
 		FString("Resistance to Physical Damage")
 	);
 
-	//Input Tags
+	// Meta Attributes
+	GameplayTags.Attributes_Meta_IncomingXP = UGameplayTagsManager::Get().AddNativeGameplayTag(
+			FName("Attributes.Meta.IncomingXP"),
+			FString("Incoming XP Meta Attribute")
+		);
+	
+	// Input Tags
 	GameplayTags.InputTag_LMB = UGameplayTagsManager::Get().AddNativeGameplayTag(
 		FName("InputTag.LMB"),
 		FString("Input Tag for Left Mouse Button")

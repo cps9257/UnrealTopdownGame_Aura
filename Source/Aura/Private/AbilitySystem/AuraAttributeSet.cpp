@@ -7,6 +7,7 @@
 #include "GameplayEffectExtension.h"
 #include "AuraGameplayTags.h"
 #include "AbilitySystem/AuraAbilitySystemLibrary.h"
+#include "Aura/AuraLogChannels.h"
 #include "Interaction/CombatInterface.h"
 #include "Kismet/GameplayStatics.h"
 #include "Perception/AISense_Damage.h"
@@ -167,6 +168,13 @@ void UAuraAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallba
 
 			UAISense_Damage::ReportDamageEvent(Props.SourceAvatarActor, Props.TargetAvatarActor, Props.SourceAvatarActor, LocalIncomingDamage, FVector(), FVector());
 		}
+	}
+
+	if(Data.EvaluatedData.Attribute == GetIncomingXPAttribute())
+	{
+		const float LocalIncomingXP = GetIncomingXP();
+		SetIncomingXP(0.f);
+		UE_LOG(LogAura, Log, TEXT("Incoming XP :%f"), LocalIncomingXP);
 	}
 }
 
