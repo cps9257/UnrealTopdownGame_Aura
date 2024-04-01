@@ -74,7 +74,6 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Widget Data")
 	TObjectPtr<UAbilityInfo> AbilityInfo;
 
-	
 	UPROPERTY(BlueprintReadOnly, Category="WidgetContorller")
 	TObjectPtr<APlayerController> PlayerController;
 
