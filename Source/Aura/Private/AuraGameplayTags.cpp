@@ -93,10 +93,10 @@ void FAuraGameplayTags::InitializeNativeGameplayTags()
 
 	// Meta Attributes
 	GameplayTags.Attributes_Meta_IncomingXP = UGameplayTagsManager::Get().AddNativeGameplayTag(
-			FName("Attributes.Meta.IncomingXP"),
-			FString("Incoming XP Meta Attribute")
-		);
-	
+		FName("Attributes.Meta.IncomingXP"),
+		FString("Incoming XP Meta Attribute")
+	);
+
 	// Input Tags
 	GameplayTags.InputTag_LMB = UGameplayTagsManager::Get().AddNativeGameplayTag(
 		FName("InputTag.LMB"),
@@ -160,9 +160,11 @@ void FAuraGameplayTags::InitializeNativeGameplayTags()
 	// Map
 
 	GameplayTags.DamageTypesToResistances.Add(GameplayTags.Damage_Fire, GameplayTags.Attributes_Resistance_Fire);
-	GameplayTags.DamageTypesToResistances.Add(GameplayTags.Damage_Lightning, GameplayTags.Attributes_Resistance_Lightning);
+	GameplayTags.DamageTypesToResistances.Add(GameplayTags.Damage_Lightning,
+	                                          GameplayTags.Attributes_Resistance_Lightning);
 	GameplayTags.DamageTypesToResistances.Add(GameplayTags.Damage_Arcane, GameplayTags.Attributes_Resistance_Arcane);
-	GameplayTags.DamageTypesToResistances.Add(GameplayTags.Damage_Physical, GameplayTags.Attributes_Resistance_Physical);
+	GameplayTags.DamageTypesToResistances.
+	             Add(GameplayTags.Damage_Physical, GameplayTags.Attributes_Resistance_Physical);
 
 	// Effect
 
@@ -170,9 +172,9 @@ void FAuraGameplayTags::InitializeNativeGameplayTags()
 		FName("Effects.HitReact"),
 		FString("Tag granted when Hit Reacting")
 	);
-	
+
 	// Abilities
-	
+
 	GameplayTags.Abilities_Attack = UGameplayTagsManager::Get().AddNativeGameplayTag(
 		FName("Abilities.Attack"),
 		FString("Attack Ability Tag")
@@ -183,30 +185,66 @@ void FAuraGameplayTags::InitializeNativeGameplayTags()
 		FString("Summon Ability Tag")
 	);
 
+	GameplayTags.Abilities_HitReact = UGameplayTagsManager::Get().AddNativeGameplayTag(
+		FName("Abilities.HitReact"),
+		FString("HitReact Ability Tag")
+	);
+
+	GameplayTags.Abilities_Status_Locked = UGameplayTagsManager::Get().AddNativeGameplayTag(
+		FName("Abilities.Status.Locked"),
+		FString("Locked Status")
+	);
+
+	GameplayTags.Abilities_Status_Eligible = UGameplayTagsManager::Get().AddNativeGameplayTag(
+		FName("Abilities.Status.Eligible"),
+		FString("Eligible Status")
+	);
+	GameplayTags.Abilities_Status_Unlocked = UGameplayTagsManager::Get().AddNativeGameplayTag(
+		FName("Abilities.Status.Unlocked"),
+		FString("Unlocked Status")
+	);
+	GameplayTags.Abilities_Status_Equipped = UGameplayTagsManager::Get().AddNativeGameplayTag(
+		FName("Abilities.Status.Equipped"),
+		FString("Equipped Status")
+	);
+
+	GameplayTags.Abilities_Type_None = UGameplayTagsManager::Get().AddNativeGameplayTag(
+		FName("Abilities.Type.None"),
+		FString("Type None")
+	);
+	GameplayTags.Abilities_Type_Offensive = UGameplayTagsManager::Get().AddNativeGameplayTag(
+		FName("Abilities.Type.Offensive"),
+		FString("Type Offensive")
+	);
+	GameplayTags.Abilities_Type_Passive = UGameplayTagsManager::Get().AddNativeGameplayTag(
+		FName("Abilities.Type.Passive"),
+		FString("Type Passive")
+	);
+
 	GameplayTags.Abilities_Fire_FireBolt = UGameplayTagsManager::Get().AddNativeGameplayTag(
-			FName("Abilities.Fire.FireBolt"),
-			FString("FireBolt Ability Tag")
-		);
+		FName("Abilities.Fire.FireBolt"),
+		FString("FireBolt Ability Tag")
+	);
 
 
 	// Cooldown
 	GameplayTags.Cooldown_Fire_FireBolt = UGameplayTagsManager::Get().AddNativeGameplayTag(
-			FName("Cooldown.Fire.FireBolt"),
-			FString("FireBolt Cooldown Tag")
-		);
+		FName("Cooldown.Fire.FireBolt"),
+		FString("FireBolt Cooldown Tag")
+	);
 
 	// Combat Sockets
 
 	GameplayTags.CombatSocket_Weapon = UGameplayTagsManager::Get().AddNativeGameplayTag(
-			FName("CombatSocket.Weapon"),
-			FString("Weapon")
-		);
-	
+		FName("CombatSocket.Weapon"),
+		FString("Weapon")
+	);
+
 	GameplayTags.CombatSocket_RightHand = UGameplayTagsManager::Get().AddNativeGameplayTag(
 		FName("CombatSocket.RightHand"),
 		FString("Right Hand")
 	);
-	
+
 	GameplayTags.CombatSocket_LeftHand = UGameplayTagsManager::Get().AddNativeGameplayTag(
 		FName("CombatSocket.LeftHand"),
 		FString("Left Hand")
@@ -216,27 +254,26 @@ void FAuraGameplayTags::InitializeNativeGameplayTags()
 		FName("CombatSocket.Tail"),
 		FString("Tail")
 	);
-	
+
 	// Montage Tags
 
 	GameplayTags.Montage_Attack_1 = UGameplayTagsManager::Get().AddNativeGameplayTag(
-			FName("Montage.Attack.1"),
-			FString("Attack 1")
-		);
-	
+		FName("Montage.Attack.1"),
+		FString("Attack 1")
+	);
+
 	GameplayTags.Montage_Attack_2 = UGameplayTagsManager::Get().AddNativeGameplayTag(
-			FName("Montage.Attack.2"),
-			FString("Attack 2")
-		);
-	
+		FName("Montage.Attack.2"),
+		FString("Attack 2")
+	);
+
 	GameplayTags.Montage_Attack_3 = UGameplayTagsManager::Get().AddNativeGameplayTag(
-			FName("Montage.Attack.3"),
-			FString("Attack 3")
-		);
-	
+		FName("Montage.Attack.3"),
+		FString("Attack 3")
+	);
+
 	GameplayTags.Montage_Attack_4 = UGameplayTagsManager::Get().AddNativeGameplayTag(
-			FName("Montage.Attack.4"),
-			FString("Attack 4")
-		);
-	
+		FName("Montage.Attack.4"),
+		FString("Attack 4")
+	);
 }
