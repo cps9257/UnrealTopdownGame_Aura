@@ -27,12 +27,7 @@ void UAttributeMenuWidgetController::BindCallbacksToDependencies()
 			OnAttributePointChangedDelegate.Broadcast(NewAttributePoint);
 		}
 	);
-	GetAuraPS()->OnSpellPointsChangedDelegate.AddLambda(
-		[this](int32 NewSpellPoint)
-		{
-			OnSpellPointChangedDelegate.Broadcast(NewSpellPoint);
-		}
-	);
+	
 }
 
 
@@ -46,7 +41,6 @@ void UAttributeMenuWidgetController::BroadcastInitialValues()
 	}
 
 	OnAttributePointChangedDelegate.Broadcast(GetAuraPS()->GetAttributePoints());
-	OnSpellPointChangedDelegate.Broadcast(GetAuraPS()->GetSpellPoints());
 }
 
 void UAttributeMenuWidgetController::UpgradeAttribute(const FGameplayTag& AttributeTag)
