@@ -7,6 +7,8 @@
 #include "UI/WidgetController/AuraWidgetController.h"
 #include "SpellMenuWidgetController.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnSpellGlobeSelectedSignature, bool , bSpendPointButtonEnable, bool , bEquipButtonEnable);
+
 /**
  * 
  */
@@ -22,4 +24,9 @@ public:
 	UPROPERTY(BlueprintAssignable, Category= "GAS|SpellPoint")
 	FOnPlayerStatChangedSignature OnSpellPointChangedDelegate;
 
+	UPROPERTY(BlueprintAssignable, Category= "GAS|SpellPoint")
+	FOnSpellGlobeSelectedSignature OnSpellGlobeSelectedDelegate;
+
+	UFUNCTION(BlueprintCallable, Category= "GAS|SpellPoint")
+	void SelectSpellGlobe(const FGameplayTag& AbilityTag);
 };
